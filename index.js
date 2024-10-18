@@ -6,7 +6,7 @@ const CustomerMailCollectionRoutes = require("./src/CustomerEmail/CustomerEmail"
 
 const app = express();
 app.use(bodyParser.json());
-
+app.use(cors());
 app.use("/api", smtpCollectionRoutes);
 app.use("/api", CustomerMailCollectionRoutes);
 
