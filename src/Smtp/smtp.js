@@ -2,6 +2,7 @@ require("dotenv").config();
 const express = require("express");
 const cors = require("cors");
 const { SMTPClient } = require("../config/db.config");
+const { ObjectId } = require("mongodb");
 
 const smtpCollection = SMTPClient.collection("smtpmails");
 
@@ -52,6 +53,7 @@ smtpCollectionRoutes.patch("/Update/:id", async (req, res) => {
 });
 smtpCollectionRoutes.delete("/Delete/:id", async (req, res) => {
   try {
+    console.log(req.params.id);
     const id = req.params.id;
     const query = { _id: new ObjectId(id), email: req.body.email };
     const result = await smtpCollection.deleteOne(query);
