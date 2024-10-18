@@ -33,6 +33,16 @@ CustomerMailCollectionRoutes.post("/NewCustomerEmails", async (req, res) => {
   }
 });
 
+CustomerMailCollectionRoutes.get("/CustomersEmail", async (req, res) => {
+  try {
+    const result = await CustomerMailCollection.find({}).toArray();
+    res.status(200).send(result);
+  } catch (error) {
+    console.error("Error fetching users:", error);
+    res.status(500).send({ message: "Internal server error" });
+  }
+});
+
 // smtpCollectionRoutes.get("/", async (req, res) => {
 //   try {
 //     const result = await smtpCollection.find({}).toArray();
