@@ -58,4 +58,4 @@ smtpCollectionRoutes.delete("/Delete/:id", async (req, res) => {
     res.status(500).send({ message: "Internal server error" });
   }
 });
-module.exports = smtpCollectionRoutes;
+module.exports = CustomerMailCollectionRoutes;
