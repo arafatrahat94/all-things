@@ -40,5 +40,24 @@ smtpCollectionRoutes.get("/GetSmtp", async (req, res) => {
     res.status(500).send({ message: "Internal server error" });
   }
 });
-
+smtpCollectionRoutes.patch("/Update/:id", async (req, res) => {
+  try {
+    const id = req.params.id;
+    const query = { _id: new ObjectId(id), email: req.body.email };
+    const result = await smtpCollection.updateOne(query);
+    res.status(200).send(result);
+  } catch (error) {
+    res.status(500).send({ message: "Internal server error" });
+  }
+});
+smtpCollectionRoutes.delete("/Delete/:id", async (req, res) => {
+  try {
+    const id = req.params.id;
+    const query = { _id: new ObjectId(id), email: req.body.email };
+    const result = await smtpCollection.deleteOne(query);
+    res.status(200).send(result);
+  } catch (error) {
+    res.status(500).send({ message: "Internal server error" });
+  }
+});
 module.exports = smtpCollectionRoutes;
