@@ -3,6 +3,7 @@ const bodyParser = require("body-parser");
 const { dbConnection } = require("./src/config/db.config");
 const smtpCollectionRoutes = require("./src/Smtp/smtp");
 const CustomerMailCollectionRoutes = require("./src/CustomerEmail/CustomerEmail");
+const cors = require("cors");
 
 const app = express();
 app.use(bodyParser.json());
